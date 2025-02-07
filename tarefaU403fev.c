@@ -400,7 +400,6 @@ int main() {
         cor = !cor;
 
       ssd1306_send_data(&ssd);
-      printf("Iniciando...\n");
       sleep_ms(500);
 
         printf("Digite um caractere: ");
