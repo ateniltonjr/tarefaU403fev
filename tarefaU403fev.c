@@ -29,13 +29,31 @@ void iniciar_rgb() {
   gpio_set_dir(BLUE, GPIO_OUT);
 }
 
-// Função para iniciar os leds RGB dos pinos 11, 12 e 13 e configurar o tempo ligado
+// Função para ligar os leds com uma linha de código
 void state(bool rr, bool gg, bool bb) {
  iniciar_rgb();
  gpio_put(RED, rr);
  gpio_put(GREEN, gg);
  gpio_put(BLUE, bb);
 } 
+
+ssd1306_t ssd;  // Declara a variável ssd de forma global
+// Inicialização do I2C e do display OLED
+void display() {
+    i2c_init(I2C_PORT, 400 * 1000);
+    gpio_set_function(I2C_SDA, GPIO_FUNC_I2C);
+    gpio_set_function(I2C_SCL, GPIO_FUNC_I2C);
+    gpio_pull_up(I2C_SDA);
+    gpio_pull_up(I2C_SCL);
+
+    ssd1306_init(&ssd, WIDTH, HEIGHT, false, ENDERECO, I2C_PORT);
+    ssd1306_config(&ssd);
+    ssd1306_send_data(&ssd);
+
+    // Limpa o display
+    ssd1306_fill(&ssd, false);
+    ssd1306_send_data(&ssd);
+}
 
 // Configurações dos botões
 #define DEBOUNCE_DELAY 300  // Milissegundos
@@ -64,7 +82,7 @@ void iniciar_botoes(void) {
     gpio_set_irq_enabled_with_callback(BOTAO_A, GPIO_IRQ_EDGE_FALL, true, botao_callback);
     gpio_set_irq_enabled_with_callback(BOTAO_B, GPIO_IRQ_EDGE_FALL, true, botao_callback);
 }
-
+//INTERRUPÇÃO E DEBOUNCE
 void debounce_botao(uint pino, volatile uint32_t *last_irq_time, bool *estado_LED) {
     uint32_t tempo_atual = to_ms_since_boot(get_absolute_time());
     if (tempo_atual - *last_irq_time > DEBOUNCE_DELAY) {
@@ -74,8 +92,22 @@ void debounce_botao(uint pino, volatile uint32_t *last_irq_time, bool *estado_LE
         *estado_LED = !(*estado_LED);
 
         if (pino == BOTAO_A) {
+          
+            bool cor = true;
+            ssd1306_fill(&ssd, !cor); // Limpa o display
+            ssd1306_rect(&ssd, 3, 3, 122, 58, cor, !cor); // Desenha um retângulo
+            ssd1306_draw_string(&ssd, "Acionando o", 20, 10); // Desenha uma string     
+            ssd1306_draw_string(&ssd, "Led Vermelho", 20, 30); // Desenha uma string
+            ssd1306_send_data(&ssd); // Atualiza o display
             state(*estado_LED, 0, 0);  // Alterna LED vermelho
+
         } else if (pino == BOTAO_B) {
+            bool cor = true;
+            ssd1306_fill(&ssd, !cor); // Limpa o display
+            ssd1306_rect(&ssd, 3, 3, 122, 58, cor, !cor); // Desenha um retângulo
+            ssd1306_draw_string(&ssd, "Acionando o", 20, 10); // Desenha uma string     
+            ssd1306_draw_string(&ssd, "Led Verde", 20, 30); // Desenha uma string     
+            ssd1306_send_data(&ssd); // Atualiza o display
             state(0, *estado_LED, 0);  // Alterna LED verde
 }}}
 
@@ -85,26 +117,6 @@ void botao_callback(uint gpio, uint32_t eventos) {
     } else if (gpio == BOTAO_B) {
         debounce_botao(BOTAO_B, &last_irq_time_B, &estado_LED_B);
 }}
-
-
-
-ssd1306_t ssd;  // Declara a variável ssd de forma global
-// Inicialização do I2C e do display OLED
-void display() {
-    i2c_init(I2C_PORT, 400 * 1000);
-    gpio_set_function(I2C_SDA, GPIO_FUNC_I2C);
-    gpio_set_function(I2C_SCL, GPIO_FUNC_I2C);
-    gpio_pull_up(I2C_SDA);
-    gpio_pull_up(I2C_SCL);
-
-    ssd1306_init(&ssd, WIDTH, HEIGHT, false, ENDERECO, I2C_PORT);
-    ssd1306_config(&ssd);
-    ssd1306_send_data(&ssd);
-
-    // Limpa o display
-    ssd1306_fill(&ssd, false);
-    ssd1306_send_data(&ssd);
-}
 
 #define PINO_MATRIZ 7  // Pino de controle da matriz de LEDs
 #define NUM_LEDS 25    // Número total de LEDs na matriz
@@ -117,7 +129,7 @@ int getIndex(int x, int y) {
 }}
 
 //Controlando o brilho para 30%
-uint8_t BRILHO = 255*1;
+uint8_t BRILHO = 150;
 
 // Definição da estrutura de cor para cada LED
 struct pixel_t {
@@ -163,7 +175,7 @@ void desliga() {
     bf();
 }
 
-// Funções para os diferentes efeitos
+// DESENHAR OS NÚMEROS NA MATRIZ DE LEDS
 void number0() {
     int mat1[5][5][3] = {
         {{0, 0, 0}, {BRILHO, 0, 0}, {BRILHO, 0, 0}, {BRILHO, 0, 0},{0, 0, 0}},
@@ -345,7 +357,7 @@ void number9() {
     bf();
 }
 
-char atualizar = 0; // Estado atual do sistema (0 - Desliga, 1 - Chuva)
+char atualizar = 0; // Estado atual do sistema
 void comando(char atualizar) {
     switch (atualizar) {
         case '0': number0(); break;
@@ -358,7 +370,14 @@ void comando(char atualizar) {
         case '7': number7(); break;
         case '8': number8(); break;
         case '9': number9(); break;
-        default: desliga(); break;
+        case 'r': case 'R' :  state(1,0,0); break;
+        case 'g': case 'G' :  state(0,1,0); break;
+        case 'b': case 'B' :  state(0,0,1); break;
+        case 'y': case 'Y' :  state(1,1,0); break;
+        case 'p': case 'P' :  state(1,0,1); break;
+        case 'c': case 'C' :  state(0,1,1); break;
+        case 'w': case 'W' :  state(1,1,1); break;
+        default:  desliga();  state(0,0,0); break;
 }}
 
 int main() {
@@ -368,6 +387,13 @@ int main() {
     iniciar_rgb();     // Inicializa os LEDs RGB
     iniciar_botoes();  // Configura botões com interrupções
     display();
+
+    ssd1306_fill(&ssd, !cor); // Limpa o display
+    ssd1306_rect(&ssd, 3, 3, 122, 58, cor, !cor); // Desenha um retângulo
+    ssd1306_draw_string(&ssd, "Utilize", 15, 10); // Desenha uma string
+    ssd1306_draw_string(&ssd, "os botoes", 15, 30); // Desenha uma string
+    ssd1306_draw_string(&ssd, "ou o teclado", 15, 50); // Desenha uma string      
+    ssd1306_send_data(&ssd); // Atualiza o display
 
     bool cor = true;
     while (true) {
@@ -384,7 +410,7 @@ int main() {
             printf("%c\n", atualizar);
             ssd1306_fill(&ssd, !cor);
            ssd1306_rect(&ssd, 3, 3, 122, 58, cor, !cor);
-           ssd1306_draw_string(&ssd, &atualizar, 8, 10);
+           ssd1306_draw_string(&ssd, &atualizar, 63, 29);
           ssd1306_send_data(&ssd);}}
     return 0; 
 }
