@@ -52,23 +52,35 @@ Este projeto utiliza a placa BitDogLab com os seguintes componentes:
 
 ## 📂 Estrutura do Repositório
 ```
-├── DisplayC.c           # Código principal do projeto
+├── tarefaU403fev.c      # Código principal do projeto
 ├── font.h               # Biblioteca com fontes modificadas
 ├── README.md            # Este arquivo
+└── ws2818b.pio.h        # Biblioteca para configuração da matriz de led
+└── ssd1306.c            # Configuração dos cos caracteres a serem exibidos no display
+└── ssd1306.h            # Configura a .c como biblioteca
 └── ...                  # Demais arquivos necessários
 ```
 
 ## 🖥️ Como Compilar
 1. Clone o repositório:
    ```bash
-   git clone <URL-do-repositório>
+   git clone https://github.com/ateniltonjr/tarefaU403fev.git
    ```
 2. Navegue até o diretório do projeto:
    ```bash
-   cd <nome-do-diretório>
+   cd tarefaU403fev
    ```
 3. Compile o projeto com seu ambiente de desenvolvimento configurado para o RP2040.
 4. Carregue o código na placa BitDogLab.
+
+## 🖥️ Metodo alternativo:
+1. Baixe o repositório com arquivo zip.
+2. Extraia para uma pasta de fácil acesso
+3. Utilize a extensão raspberry pi pico dentro do VS Code para importar o projeto.
+4. Aguarde ate criar o arquivo build
+5. Utilize o ícone "_compile_" para compilar.
+6. Utilize o "_RUN_" com a BitDogLab em modo boot seel para enviar o programa para a sua RP2040.
+7. Agora, interaja com os botões e o teclado para mergulhar nas funcionalidades do projeto.
 
 ## 🧑‍💻 Autor
 **Atenilton Santos de Souza Júnior**
@@ -79,6 +91,7 @@ Tarefa apresentada ao Cepedi como parte dos critérios de avaliação do curso E
 ## 🤝 Contribuições
 Este projeto foi desenvolvido por **Atenilton Santos de Souza Júnior**.
 Contribuições são bem-vindas! Siga os passos abaixo para contribuir:
+
 1. Fork este repositório.
 2. Crie uma nova branch:
    ```bash
@@ -95,7 +108,7 @@ Contribuições são bem-vindas! Siga os passos abaixo para contribuir:
 5. Abra um Pull Request.
 
 ## 📽️ Demonstração em Vídeo
-- Link para o vídeo demonstrativo: [YouTube/Google Drive](#)
+- O vídeo de demonstração do projeto pode ser visualido aqui: [Drive](#)
 
 ## 📜 Licença
 Este projeto está licenciado sob a [MIT License](LICENSE).
