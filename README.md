@@ -1,5 +1,5 @@
 ![image](https://github.com/user-attachments/assets/f2a5c9b8-6208-4723-8f46-1d74be421827)
- o código na placa BitDogLab.
+
 
 # 🛠️ Projeto: Interfaces de Comunicação Serial com RP2040
 
