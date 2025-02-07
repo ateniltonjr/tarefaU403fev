@@ -75,7 +75,7 @@
       "type": "wokwi-pushbutton",
       "id": "btn2",
       "top": -93.6,
-      "left": 144.2,
+      "left": 153.8,
       "rotate": 180,
       "attrs": { "color": "grey" }
     },
@@ -86,7 +86,7 @@
       "left": -76.57,
       "attrs": { "i2cAddress": "0x3c" }
     },
-    { "type": "wokwi-vcc", "id": "vcc1", "top": -181.64, "left": -57.6, "attrs": {} }
+    { "type": "wokwi-vcc", "id": "vcc1", "top": -181.64, "left": -38.4, "attrs": {} }
   ],
   "connections": [
     [ "pico:GP0", "$serialMonitor:RX", "", [] ],
@@ -116,21 +116,21 @@
     [ "rgb22:DOUT", "rgb23:DIN", "green", [ "v-20.1", "h48.8" ] ],
     [ "rgb23:DOUT", "rgb24:DIN", "green", [ "v-20.1", "h48.8" ] ],
     [ "rgb24:DOUT", "rgb25:DIN", "green", [ "v-20.1", "h48.8" ] ],
-    [ "r3:2", "pico:GP11", "blue", [ "h0", "v8.4" ] ],
     [ "r3:1", "rgb26:B", "blue", [ "h0", "v-19.2" ] ],
-    [ "r2:1", "rgb26:G", "green", [ "h0" ] ],
+    [ "r2:1", "rgb26:G", "limegreen", [ "h0" ] ],
     [ "r1:1", "rgb26:R", "red", [ "h0", "v-19.2" ] ],
-    [ "pico:GP12", "r2:2", "green", [ "h-9.6", "v0.04", "h-18" ] ],
     [ "pico:GP13", "r1:2", "red", [ "v19.24", "h-94.8" ] ],
     [ "pico:GND.4", "rgb26:COM", "black", [ "v0.04", "h-162.8" ] ],
     [ "pico:GP5", "btn1:1.r", "yellow", [ "h0" ] ],
     [ "pico:GND.3", "btn1:2.r", "black", [ "h0" ] ],
-    [ "oled1:SCL", "pico:GP15", "magenta", [ "v-38.4", "h-76.5", "v182.4", "h288" ] ],
-    [ "oled1:SDA", "pico:GP14", "purple", [ "v-48", "h-95.93", "v201.6", "h364.8", "v-48.04" ] ],
-    [ "oled1:GND", "pico:GP14", "black", [ "v-28.8", "h-48", "v163.2", "h345.6", "v-28.84" ] ],
+    [ "oled1:SCL", "pico:GP15", "magenta", [ "v-38.4", "h-76.5", "v172.8", "h336" ] ],
+    [ "oled1:SDA", "pico:GP14", "purple", [ "v-48", "h-95.93", "v192", "h345.6" ] ],
+    [ "oled1:GND", "pico:GP14", "black", [ "v-28.8", "h-48", "v153.6", "h326.4" ] ],
     [ "oled1:VCC", "vcc1:VCC", "red", [ "v0" ] ],
     [ "pico:GND.3", "btn2:1.l", "black", [ "h-28.8" ] ],
-    [ "pico:GP6", "btn2:2.l", "gray", [ "h0" ] ]
+    [ "pico:GP6", "btn2:2.l", "gray", [ "h0" ] ],
+    [ "pico:GP11", "r2:2", "limegreen", [ "h-57.6", "v19.2" ] ],
+    [ "r3:2", "pico:GP12", "blue", [ "h37.2", "v9.56" ] ]
   ],
   "dependencies": {}
 }
