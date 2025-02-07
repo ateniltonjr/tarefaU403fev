@@ -1,0 +1,4 @@
+[wokwi]
+version = 1
+firmware = 'build\tarefaU403fev.uf2'
+elf = 'build\tarefaU403fev.elf'
