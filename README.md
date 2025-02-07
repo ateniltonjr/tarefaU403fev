@@ -108,7 +108,7 @@ Contribuições são bem-vindas! Siga os passos abaixo para contribuir:
 5. Abra um Pull Request.
 
 ## 📽️ Demonstração em Vídeo
-- O vídeo de demonstração do projeto pode ser visualido aqui: [Drive](#)
+- O vídeo de demonstração do projeto pode ser visualizado aqui: [Drive](#)
 
 ## 📜 Licença
 Este projeto está licenciado sob a [MIT License](LICENSE).
