@@ -14,8 +14,8 @@
 #define ENDERECO 0x3C
 
 // Definições dos pinos do LED RGB
-#define BLUE 11
-#define GREEN 12
+#define BLUE 12
+#define GREEN 11
 #define RED 13
 
 //Inicializar os pinos do led RGB
