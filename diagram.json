@@ -100,12 +100,21 @@
       "top": -19.2,
       "left": -57.6,
       "attrs": { "text": "DISPLAY\nSSD1306" }
+    },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": -172.3, "left": -76.5, "rotate": 90, "attrs": {} },
+    { "type": "wokwi-logo", "id": "logo1", "top": -230.4, "left": 230.4, "attrs": {} },
+    {
+      "type": "wokwi-text",
+      "id": "text2",
+      "top": -211.2,
+      "left": 201.6,
+      "attrs": { "text": "⚡Atenilton Júnior 💡" }
     }
   ],
   "connections": [
     [ "pico:GP0", "$serialMonitor:RX", "", [] ],
     [ "pico:GP1", "$serialMonitor:TX", "", [] ],
-    [ "rgb1:DIN", "pico:GP7", "#8f4814", [ "h114.4", "v57.6" ] ],
+    [ "rgb1:DIN", "pico:GP7", "cyan", [ "h114.4", "v57.6" ] ],
     [ "rgb1:DOUT", "rgb2:DIN", "white", [ "h0" ] ],
     [ "rgb2:DOUT", "rgb3:DIN", "white", [ "h0" ] ],
     [ "rgb3:DOUT", "rgb4:DIN", "white", [ "h0" ] ],
@@ -136,15 +145,15 @@
     [ "pico:GP13", "r1:2", "red", [ "v19.24", "h-94.8" ] ],
     [ "pico:GND.4", "rgb26:COM", "black", [ "v0.04", "h-162.8" ] ],
     [ "pico:GP5", "btn1:1.r", "red", [ "h0" ] ],
-    [ "oled1:SCL", "pico:GP15", "orange", [ "v-38.4", "h-76.5", "v172.8", "h336" ] ],
-    [ "oled1:SDA", "pico:GP14", "#8f4814", [ "v-48", "h-95.93", "v192", "h345.6" ] ],
-    [ "oled1:GND", "pico:GP14", "black", [ "v-28.8", "h-48", "v153.6", "h326.4" ] ],
+    [ "oled1:SCL", "pico:GP15", "#8f4814", [ "v-38.4", "h-76.5", "v172.8", "h336" ] ],
+    [ "oled1:SDA", "pico:GP14", "gray", [ "v-48", "h-95.93", "v192", "h345.6" ] ],
     [ "oled1:VCC", "vcc1:VCC", "purple", [ "v0" ] ],
     [ "pico:GND.3", "btn2:1.l", "black", [ "h-28.8" ] ],
     [ "pico:GP6", "btn2:2.l", "green", [ "h0" ] ],
     [ "pico:GP11", "r2:2", "limegreen", [ "h-57.6", "v19.2" ] ],
     [ "r3:2", "pico:GP12", "blue", [ "h37.2", "v9.56" ] ],
-    [ "btn2:1.r", "btn1:2.r", "black", [ "v0" ] ]
+    [ "btn2:1.r", "btn1:2.r", "black", [ "v0" ] ],
+    [ "oled1:GND", "gnd1:GND", "black", [ "v0" ] ]
   ],
   "dependencies": {}
 }
