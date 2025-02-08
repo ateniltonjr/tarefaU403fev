@@ -1,6 +1,5 @@
 ![image](https://github.com/user-attachments/assets/f2a5c9b8-6208-4723-8f46-1d74be421827)
 
-
 # 🛠️ Projeto: Interfaces de Comunicação Serial com RP2040
 
 ## 📑 Sumário
@@ -12,7 +11,6 @@
 - [🖥️ Como Compilar](#%EF%B8%8F-como-compilar)
 - [🤝 Contribuições](#-contribui%C3%A7%C3%B5es)
 - [📽️ Demonstração em Vídeo](#%EF%B8%8F-demonstra%C3%A7%C3%A3o-em-v%C3%ADdeo)
-- [📜 Licença](#-licen%C3%A7a)
 - [💡 Considerações Finais](#-considera%C3%A7%C3%B5es-finais)
 
 ## 🎯 Objetivos
@@ -28,7 +26,7 @@ Este projeto utiliza a placa BitDogLab com os seguintes componentes:
 - LED RGB (GPIOs 11, 12 e 13)
 - Botão A (GPIO 5)
 - Botão B (GPIO 6)
-- Display SSD1306 via I2C (GPIO 14 e GPIO 15)
+- Display SSD1306 via I2C (GPIO 14 (SDA) e GPIO 15 (SCL))
 
 ## ⚙️ Funcionalidades Implementadas
 1. **Modificação da Biblioteca `font.h`:**
@@ -86,7 +84,7 @@ Este projeto utiliza a placa BitDogLab com os seguintes componentes:
 **Atenilton Santos de Souza Júnior**
 
 ## 📝 Descrição
-Tarefa apresentada ao Cepedi como parte dos critérios de avaliação do curso EmbarcaTech em Software e Sistemas Embarcados, com foco na aplicação prática de comunicação serial e integração de hardware com o microcontrolador RP2040.
+Tarefa apresentada ao Cepedi como parte dos critérios de avaliação do curso EmbarcaTech em Software e Sistemas Embarcados, com foco na aplicação prática de comunicação serial via UART, I2C e SPI, e integração de hardware com o microcontrolador RP2040.
 
 ## 🤝 Contribuições
 Este projeto foi desenvolvido por **Atenilton Santos de Souza Júnior**.
@@ -108,10 +106,7 @@ Contribuições são bem-vindas! Siga os passos abaixo para contribuir:
 5. Abra um Pull Request.
 
 ## 📽️ Demonstração em Vídeo
-- O vídeo de demonstração do projeto pode ser visualizado aqui: [Drive](#)
-
-## 📜 Licença
-Este projeto está licenciado sob a [MIT License](LICENSE).
-
+- O vídeo de demonstração do projeto pode ser visualizado aqui: [YouTube](https://youtu.be/PNiMONz7RcU)
+  
 ## 💡 Considerações Finais
-Este projeto oferece uma ótima oportunidade para consolidar conhecimentos sobre comunicação serial, manipulação de hardware e desenvolvimento com microcontroladores. Certifique-se de seguir todos os requisitos e manter um código limpo e bem comentado.
+Este projeto oferece uma ótima oportunidade para consolidar conhecimentos sobre comunicação serial,SPI e I2C, manipulação de hardware e desenvolvimento com microcontroladores.
