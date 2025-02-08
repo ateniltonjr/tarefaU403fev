@@ -359,12 +359,12 @@ int main() {
     bool cor = true; // Declarado corretamente antes de seu uso
 
       // Exibição inicial no display OLED
-      ssd1306_fill(&ssd, !cor);  // Limpa o display preenchendo com a cor oposta ao valor atual de "cor"
+      ssd1306_fill(&ssd, !cor);                             // Limpa o display preenchendo com a cor oposta ao valor atual de "cor"
       ssd1306_rect(&ssd, 3, 3, 122, 58, cor, !cor);        // Desenha um retângulo com bordas dentro das coordenadas especificadas
       ssd1306_draw_string(&ssd, "Ola !!!", 20, 10);       // Escreve "Utilize" na posição (20, 10) do display
-      ssd1306_draw_string(&ssd, "Use os botoes", 17, 30);    // Escreve "os botoes" na posição (20, 30) do display
+      ssd1306_draw_string(&ssd, "Use os botoes", 17, 30);// Escreve "os botoes" na posição (20, 30) do display
       ssd1306_draw_string(&ssd, "ou o teclado", 20, 50);// Escreve "ou o teclado" na posição (20, 50) do display
-      ssd1306_send_data(&ssd);  // Envia os dados para atualizar o display
+      ssd1306_send_data(&ssd);                         // Envia os dados para atualizar o display
 
 // Loop infinito para manter a aplicação em execução
 while (true) {
@@ -372,15 +372,15 @@ while (true) {
     ssd1306_send_data(&ssd);  // Atualiza o display
     sleep_ms(500);  // Aguarda 500 ms
 
-    printf("Digite um caractere: ");  // Solicita a entrada de um caractere ao usuário
-    fflush(stdout);  // Certifica-se de que o buffer de saída seja limpo antes de aguardar a entrada
-    if (scanf(" %c", &atualizar) == 1) {  // Lê um caractere do usuário e verifica se a leitura foi bem-sucedida
-        comando(atualizar);  // Executa um comando com base no caractere digitado
-        printf("%c\n", atualizar);  // Exibe o caractere digitado
-        ssd1306_fill(&ssd, !cor);  // Limpa o display com a cor oposta
+    printf("Digite um caractere: ");                         // Solicita a entrada de um caractere ao usuário
+    fflush(stdout);                                         // Certifica-se de que o buffer de saída seja limpo antes de aguardar a entrada
+    if (scanf(" %c", &atualizar) == 1) {                   // Lê um caractere do usuário e verifica se a leitura foi bem-sucedida
+        comando(atualizar);                               // Executa um comando com base no caractere digitado
+        printf("%c\n", atualizar);                       // Exibe o caractere digitado
+        ssd1306_fill(&ssd, !cor);                       // Limpa o display com a cor oposta
         ssd1306_rect(&ssd, 3, 3, 122, 58, cor, !cor);  // Desenha um retângulo com bordas no display
-        ssd1306_draw_string(&ssd, &atualizar, 63, 29); // Mostra o caractere digitado na posição (63, 29) do display
-        ssd1306_send_data(&ssd);  // Atualiza o display com as novas informações
+        ssd1306_draw_string(&ssd, &atualizar, 63, 29);// Mostra o caractere digitado na posição (63, 29) do display
+        ssd1306_send_data(&ssd);                     // Atualiza o display com as novas informações
     }}
     return 0;  // Retorna 0 ao sistema operacional (nunca será alcançado devido ao loop infinito)
 }
