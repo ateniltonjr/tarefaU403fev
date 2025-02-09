@@ -8,35 +8,13 @@
 #include <stdio.h>   // Biblioteca para entrada/saída padrão (printf, scanf)
 #include <math.h>   // Biblioteca para operações matemáticas
 #include "font.h"  // Biblioteca de fontes fornecida pelo professor Wilton
+#include "rgb.h"
 
 // Definições dos pinos para comunicação I2C
 #define I2C_PORT i2c1    // Porta I2C utilizada
 #define I2C_SDA 14      // Pino para SDA (Serial Data Line)
 #define I2C_SCL 15     // Pino para SCL (Serial Clock Line)
 #define ENDERECO 0x3C // Endereço I2C do display SSD1306
-
-// Definições dos pinos do LED RGB
-#define BLUE 12   // Pino para controlar o LED azul
-#define GREEN 11 // Pino para controlar o LED verde
-#define RED 13  // Pino para controlar o LED vermelho
-
-// Função para inicializar os pinos do LED RGB
-void iniciar_rgb() {
-  gpio_init(RED);    // Inicializa o pino do LED vermelho
-  gpio_init(GREEN); // Inicializa o pino do LED verde
-  gpio_init(BLUE); // Inicializa o pino do LED azul
-  gpio_set_dir(RED, GPIO_OUT);    // Define o pino como saída
-  gpio_set_dir(GREEN, GPIO_OUT); // Define o pino como saída
-  gpio_set_dir(BLUE, GPIO_OUT); // Define o pino como saída
-}
-
-// Função para controlar o estado dos LEDs RGB
-void state(bool rr, bool gg, bool bb) {
-  iniciar_rgb();          // Garante que os pinos estejam configurados como saída
-  gpio_put(RED, rr);     // Define o estado do LED vermelho
-  gpio_put(GREEN, gg);  // Define o estado do LED verde
-  gpio_put(BLUE, bb);  // Define o estado do LED azul
-}
 
 ssd1306_t ssd;  // Declara a variável ssd de forma global
 // Inicialização e configurar do I2C e do display OLED SSD1306 
@@ -328,7 +306,7 @@ int main() {
       // Exibição inicial no display OLED
       ssd1306_fill(&ssd, !cor);                             // Limpa o display preenchendo com a cor oposta ao valor atual de "cor"
       ssd1306_rect(&ssd, 3, 3, 122, 58, cor, !cor);        // Desenha um retângulo com bordas dentro das coordenadas especificadas
-      ssd1306_draw_string(&ssd, "Ola !!!", 20, 10);       // Escreve "Utilize" na posição (20, 10) do display
+      ssd1306_draw_string(&ssd, "Ola !!!", 42, 10);       // Escreve "Utilize" na posição (20, 10) do display
       ssd1306_draw_string(&ssd, "Use os botoes", 17, 30);// Escreve "os botoes" na posição (20, 30) do display
       ssd1306_draw_string(&ssd, "ou o teclado", 20, 50);// Escreve "ou o teclado" na posição (20, 50) do display
       ssd1306_send_data(&ssd);                         // Envia os dados para atualizar o display

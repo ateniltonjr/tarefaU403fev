@@ -37,6 +37,7 @@ pico_sdk_init()
 add_executable(tarefaU403fev 
     tarefaU403fev.c
     ssd1306.c  # Certifique-se de que este arquivo está no local correto
+    rgb.c
 )
 
 pico_set_program_name(tarefaU403fev "tarefaU403fev")
