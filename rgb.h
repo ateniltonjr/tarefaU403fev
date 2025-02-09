@@ -5,8 +5,8 @@
 #include "pico/stdlib.h"  // Biblioteca necessária para GPIO no Raspberry Pi Pico
 
 // Definições dos pinos do LED RGB
-#define BLUE 11
-#define GREEN 12
+#define BLUE 12
+#define GREEN 11
 #define RED 13
 
 // Protótipos das funções
