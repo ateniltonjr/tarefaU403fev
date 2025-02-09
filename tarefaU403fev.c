@@ -75,22 +75,22 @@ void debounce_botao(uint pino, volatile uint32_t *last_irq_time, bool *estado_LE
             ssd1306_fill(&ssd, !cor); // Limpa o display
             ssd1306_rect(&ssd, 3, 3, 122, 58, cor, !cor); // Desenha um retângulo
             ssd1306_draw_string(&ssd, "Acionando o", 20, 10);  // Exibe texto no display
-            ssd1306_draw_string(&ssd, "Led Vermelho", 20, 30); // Exibe texto indicando LED vermelho
+            ssd1306_draw_string(&ssd, "Led verde", 20, 30); // Exibe texto indicando LED vermelho
             ssd1306_draw_string(&ssd, *estado_LED ? "Ligado!" : "Desligado!", 20, 50); // Exibe estado do LED
             ssd1306_send_data(&ssd); // Atualiza o display
-            printf("Led vermelho %s\n", *estado_LED ? "ligado!" : "desligado!"); // Log no console
-            state(*estado_LED, 0, 0); // Alterna o estado do LED vermelho
+            printf("Led verde %s\n", *estado_LED ? "ligado!" : "desligado!"); // Log no console
+            state(0,*estado_LED, 0); // Alterna o estado do LED verde
 
         } else if (pino == BOTAO_B) { // Verifica se o pino é o Botão B
             bool cor = true;
             ssd1306_fill(&ssd, !cor); // Limpa o display
             ssd1306_rect(&ssd, 3, 3, 122, 58, cor, !cor); // Desenha um retângulo
             ssd1306_draw_string(&ssd, "Acionando o", 20, 10); // Exibe texto no display
-            ssd1306_draw_string(&ssd, "Led Verde", 20, 30);  // Exibe texto indicando LED verde
+            ssd1306_draw_string(&ssd, "Led azul", 20, 30);  // Exibe texto indicando LED verde
             ssd1306_draw_string(&ssd, *estado_LED ? "Ligado!" : "Desligado!", 20, 50); // Exibe estado do LED
             ssd1306_send_data(&ssd); // Atualiza o display
-            printf("Led verde %s\n", *estado_LED ? "ligado!" : "desligado!"); // Log no console
-            state(0, *estado_LED, 0); // Alterna o estado do LED verde
+            printf("Led azul %s\n", *estado_LED ? "ligado!" : "desligado!"); // Log no console
+            state(0, 0,*estado_LED); // Alterna o estado do LED azul
 }}}
 
 // Callback chamado quando ocorre interrupção em algum botão
