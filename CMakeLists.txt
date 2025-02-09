@@ -51,8 +51,7 @@ target_link_libraries(tarefaU403fev
     pico_stdlib
     hardware_pio
     hardware_i2c
-   
-)
+                )
 
 # Add the standard include files to the build
 target_include_directories(tarefaU403fev PRIVATE

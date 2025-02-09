@@ -181,6 +181,15 @@ void desliga() {
     }
     bf(); // Atualiza o estado dos LEDs
 }
+// Função para percorrer a matriz em linha
+void desenhaMatriz(int mat[5][5][3]) {
+    for (int linha = 0; linha < 5; linha++) {
+      for (int cols = 0; cols < 5; cols++) {
+        int posicao = getIndex(linha, cols);
+        cores(posicao, mat[linha][cols][0], mat[linha][cols][1], mat[linha][cols][2]);
+        }}
+    bf();  // Atualiza os LEDs
+}
 
 // DESENHAR OS NÚMEROS NA MATRIZ DE LEDS
 void number0() {  // Função para desenhar o número 0 na matriz de LEDs
@@ -192,13 +201,7 @@ void number0() {  // Função para desenhar o número 0 na matriz de LEDs
         {{0, 0, 0}, {BRILHO, 0, 0}, {0, 0, 0}, {BRILHO, 0, 0},  {0, 0, 0}},    // Linha 3
         {{0, 0, 0}, {BRILHO, 0, 0}, {BRILHO, 0, 0}, {BRILHO, 0, 0}, {0, 0, 0}}// Linha 4
     };
-    // Loop para percorrer cada linha da matriz
-    for (int linha = 0; linha < 5; linha++) {
-        for (int cols = 0; cols < 5; cols++) {  // Loop para percorrer cada coluna
-            int posicao = getIndex(linha, cols);  // Converte a posição da matriz para índice do vetor de LEDs
-            // Define a cor do LED na posição correspondente
-            cores(posicao, mat1[linha][cols][0], mat1[linha][cols][1], mat1[linha][cols][2]);
-        }}  bf();  // Atualiza o estado dos LEDs na matriz
+    desenhaMatriz(mat1);
 }
 void number1() {
     int mat1[5][5][3] = {
@@ -208,11 +211,7 @@ void number1() {
         {{0, 0, 0}, {0, 0, 0}, {0, BRILHO, 10}, {0, 0, 0}, {0, 0, 0}},
         {{0, 0, 0}, {0, 0, 0}, {0, BRILHO, 10}, {0, 0, 0}, {0, 0, 0}}
     };
-    for (int linha = 0; linha < 5; linha++) {
-        for (int cols = 0; cols < 5; cols++) {
-            int posicao = getIndex(linha, cols);
-            cores(posicao, mat1[linha][cols][0], mat1[linha][cols][1], mat1[linha][cols][2]);
-        }}  bf();
+    desenhaMatriz(mat1);
 }
 void number2() {
     int mat1[5][5][3] = {
@@ -222,11 +221,7 @@ void number2() {
         {{0, 0, 0}, {0, 10, BRILHO}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
         {{0, 0, 0}, {0, 10, BRILHO}, {0, 10, BRILHO}, {0, 10, BRILHO}, {0, 0, 0}}
     };
-    for (int linha = 0; linha < 5; linha++) {
-        for (int cols = 0; cols < 5; cols++) {
-            int posicao = getIndex(linha, cols);
-            cores(posicao, mat1[linha][cols][0], mat1[linha][cols][1], mat1[linha][cols][2]);
-        }}  bf();
+    desenhaMatriz(mat1);
 }
 void number3() {
     int mat1[5][5][3] = {
@@ -236,11 +231,7 @@ void number3() {
         {{0, 0, 0}, {0, 0, 0},     {0, 0,     0}, {100, BRILHO, 0}, {0, 0,   0}},
         {{0, 0, 0}, {100, BRILHO, 0}, {100, BRILHO, 0}, {100, BRILHO, 0}, {0, 0,   0}}
     };
-    for (int linha = 0; linha < 5; linha++) {
-        for (int cols = 0; cols < 5; cols++) {
-            int posicao = getIndex(linha, cols);
-            cores(posicao, mat1[linha][cols][0], mat1[linha][cols][1], mat1[linha][cols][2]);
-        }}  bf();
+    desenhaMatriz(mat1);
 }
 void number4() {
     int mat1[5][5][3] = {
@@ -250,11 +241,7 @@ void number4() {
         {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, BRILHO}, {0, 0, 0}},
         {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, BRILHO}, {0, 0, 0}}
     };
-    for (int linha = 0; linha < 5; linha++) {
-        for (int cols = 0; cols < 5; cols++) {
-            int posicao = getIndex(linha, cols);
-            cores(posicao, mat1[linha][cols][0], mat1[linha][cols][1], mat1[linha][cols][2]);
-        }}  bf();
+    desenhaMatriz(mat1);
 }
 void number5() {
     int mat1[5][5][3] = {
@@ -264,11 +251,7 @@ void number5() {
         {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, BRILHO, 0}, {0, 0, 0}},
         {{0, 0, 0}, {0, BRILHO, 0}, {0, BRILHO, 0}, {0, BRILHO, 0}, {0, 0, 0}}
     };
-    for (int linha = 0; linha < 5; linha++) {
-        for (int cols = 0; cols < 5; cols++) {
-            int posicao = getIndex(linha, cols);
-            cores(posicao, mat1[linha][cols][0], mat1[linha][cols][1], mat1[linha][cols][2]);
-        }}  bf();
+    desenhaMatriz(mat1);
 }
 void number6() {
     int mat1[5][5][3] = {
@@ -278,11 +261,7 @@ void number6() {
         {{0, 0, 0}, {0, 0, BRILHO}, {0, 0, 0}, {0, 0, BRILHO}, {0, 0, 0}},
         {{0, 0, 0}, {0, 0, BRILHO}, {0, 0, BRILHO}, {0, 0, BRILHO}, {0, 0, 0}}
     };
-    for (int linha = 0; linha < 5; linha++) {
-        for (int cols = 0; cols < 5; cols++) {
-            int posicao = getIndex(linha, cols);
-            cores(posicao, mat1[linha][cols][0], mat1[linha][cols][1], mat1[linha][cols][2]);
-        }} bf();
+    desenhaMatriz(mat1);
 }
 void number7() {
     int mat1[5][5][3] = {
@@ -292,11 +271,7 @@ void number7() {
         {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, BRILHO, BRILHO}, {0, 0, 0}},
         {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, BRILHO, BRILHO}, {0, 0, 0}}
     };
-    for (int linha = 0; linha < 5; linha++) {
-        for (int cols = 0; cols < 5; cols++) {
-            int posicao = getIndex(linha, cols);
-            cores(posicao, mat1[linha][cols][0], mat1[linha][cols][1], mat1[linha][cols][2]);
-        }}  bf();
+    desenhaMatriz(mat1);
 }
 void number8() {
     int mat1[5][5][3] = {
@@ -306,11 +281,7 @@ void number8() {
         {{0, 0, 0}, {BRILHO, 0, BRILHO}, {0, 0, 0}, {BRILHO, 0, BRILHO}, {0, 0, 0}},
         {{0, 0, 0}, {BRILHO, 0, BRILHO}, {BRILHO, 0, BRILHO}, {BRILHO, 0, BRILHO}, {0, 0, 0}}
     };
-    for (int linha = 0; linha < 5; linha++) {
-        for (int cols = 0; cols < 5; cols++) {
-            int posicao = getIndex(linha, cols);
-            cores(posicao, mat1[linha][cols][0], mat1[linha][cols][1], mat1[linha][cols][2]);
-        }}  bf();
+    desenhaMatriz(mat1);
 }
 void number9() {
     int mat1[5][5][3] = {
@@ -320,11 +291,7 @@ void number9() {
         {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {BRILHO, BRILHO, BRILHO}, {0, 0, 0}},
         {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {BRILHO, BRILHO, BRILHO}, {0, 0, 0}}
     };
-    for (int linha = 0; linha < 5; linha++) {
-        for (int cols = 0; cols < 5; cols++) {
-            int posicao = getIndex(linha, cols);
-            cores(posicao, mat1[linha][cols][0], mat1[linha][cols][1], mat1[linha][cols][2]);
-        } } bf();
+    desenhaMatriz(mat1);
 }
 
 char atualizar = 0; // Estado atual do sistema
