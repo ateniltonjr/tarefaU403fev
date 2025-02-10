@@ -106,7 +106,7 @@ Contribuições são bem-vindas! Siga os passos abaixo para contribuir:
 5. Abra um Pull Request.
 
 ## 📽️ Demonstração em Vídeo
-- O vídeo de demonstração do projeto pode ser visualizado aqui: [YouTube](https://youtu.be/PNiMONz7RcU)
+- O vídeo de demonstração do projeto pode ser visualizado aqui: [YouTube](https://youtu.be/IsYE_vaogtU)
   
 ## 💡 Considerações Finais
 Este projeto oferece uma ótima oportunidade para consolidar conhecimentos sobre comunicação serial,SPI e I2C, manipulação de hardware e desenvolvimento com microcontroladores.
